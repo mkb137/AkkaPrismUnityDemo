@@ -1,0 +1,45 @@
+﻿<UserControl 
+	x:Class="AkkaPrismUnityDemo.Modules.Stocks.Views.StockChart"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+    xmlns:local="clr-namespace:AkkaPrismUnityDemo.Modules.Stocks.Views"
+    xmlns:viewModels="clr-namespace:AkkaPrismUnityDemo.Modules.Stocks.ViewModels"
+	xmlns:prism="http://www.codeplex.com/prism"
+    xmlns:infrastructure="clr-namespace:AkkaPrismUnityDemo.Infrastructure;assembly=AkkaPrismUnityDemo.Infrastructure"
+	xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
+	xmlns:oxy="http://oxyplot.org/wpf"
+	mc:Ignorable="d" 
+	d:DataContext="{d:DesignInstance viewModels:StockChartViewModel}"
+    d:DesignHeight="300" d:DesignWidth="300"
+	Background="White"
+	>
+	<i:Interaction.Triggers>
+		<i:EventTrigger EventName="Loaded">
+			<i:InvokeCommandAction Command="{Binding ViewLoadedCommand}"/>
+		</i:EventTrigger>
+	</i:Interaction.Triggers>
+	<Grid>
+		<Grid.ColumnDefinitions>
+			<ColumnDefinition Width="*"/>
+		</Grid.ColumnDefinitions>
+		<Grid.RowDefinitions>
+			<RowDefinition Height="*"/>
+			<RowDefinition Height="Auto"/>
+		</Grid.RowDefinitions>
+		<oxy:PlotView 
+			Model="{Binding PlotModel}"
+			/>
+		<ItemsControl
+			Grid.Row="1" Grid.Column="0"
+			prism:RegionManager.RegionName="{x:Static infrastructure:RegionNames.ButtonsRegion}"
+			>
+			<ItemsControl.ItemsPanel>
+				<ItemsPanelTemplate>
+					<StackPanel Orientation="Horizontal"/>
+				</ItemsPanelTemplate>
+			</ItemsControl.ItemsPanel>
+		</ItemsControl>
+	</Grid>
+</UserControl>

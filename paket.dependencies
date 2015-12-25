@@ -1,0 +1,10 @@
+source https://www.nuget.org/api/v2/
+framework >= net461
+
+nuget akka 1.0.5 framework: >= net461
+nuget akka.di.core 1.0.5 framework: >= net461
+nuget log4net 2.0.5 framework: >= net461
+nuget oxyplot.wpf 1.0.0-unstable1904 framework: >= net461
+nuget prism.core 6.1.0 framework: >= net461
+nuget prism.unity 6.1.1 framework: >= net461
+nuget unity 4.0.1 framework: >= net461
