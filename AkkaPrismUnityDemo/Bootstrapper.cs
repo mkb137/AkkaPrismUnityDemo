@@ -7,6 +7,8 @@ using Microsoft.Practices.Unity;
 using Microsoft.Practices.Unity.Configuration;
 using Prism.Modularity;
 using Prism.Unity;
+using Akka.Actor;
+using Akka.DI.Unity;
 
 namespace AkkaPrismUnityDemo {
 
@@ -55,6 +57,17 @@ namespace AkkaPrismUnityDemo {
 		protected override DependencyObject CreateShell() {
 			if ( _log.IsDebugEnabled ) _log.DebugFormat( "CreateShell" );
 			return this.Container.Resolve<Shell>();
+		}
+
+		protected override void InitializeModules() {
+			// Create the actor system
+			var actorSystem = ActorSystem.Create( "StockActorSystem" );
+			// Create a dependency resolver
+			var resolver = new UnityDependencyResolver( this.Container, actorSystem );
+			// Register the actor system with the container
+			this.Container.RegisterInstance( actorSystem );
+			// Continue initializing modules
+			base.InitializeModules();
 		}
 
 		/// <summary>

@@ -94,6 +94,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Akka.DI.Unity\Akka.DI.Unity.csproj">
+      <Project>{8dff2c14-2f9f-4a6e-b4c7-04ac587085f0}</Project>
+      <Name>Akka.DI.Unity</Name>
+    </ProjectReference>
     <ProjectReference Include="..\AkkaPrismUnityDemo.Infrastructure\AkkaPrismUnityDemo.Infrastructure.csproj">
       <Project>{c0875e96-4c32-491d-aa02-6739b117e8e7}</Project>
       <Name>AkkaPrismUnityDemo.Infrastructure</Name>

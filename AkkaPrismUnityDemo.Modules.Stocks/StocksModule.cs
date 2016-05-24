@@ -44,12 +44,8 @@ namespace AkkaPrismUnityDemo.Modules.Stocks {
 		/// </summary>
 		public void Initialize() {
 			if ( _log.IsDebugEnabled ) _log.DebugFormat( "Initialize" );
-			// Create the actor system
-			var actorSystem = ActorSystem.Create( "StockActorSystem" );
-			// Create a dependency resolver
-			var resolver = new UnityDependencyResolver( this._unityContainer, actorSystem );
-			// Register the actor system with the container
-			this._unityContainer.RegisterInstance( actorSystem );
+			// Get the actor system
+			var actorSystem = this._unityContainer.Resolve<ActorSystem>();
 			// Register our random stock price service gateway to the interface
 			this._unityContainer.RegisterInstance<IStockPriceServiceGateway>( new RandomStockPriceServiceGateway() );
 
